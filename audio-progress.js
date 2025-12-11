@@ -8,13 +8,12 @@
     document.querySelectorAll('.audio-button').forEach(button => {
       const progressRing = button.querySelector('.audio-progress-ring');
       if (!progressRing) {
-        console.warn('Audio button missing progress ring:', button.id);
+        // Silently skip buttons without progress rings - they'll work fine without them
         return;
       }
       
       const circle = progressRing.querySelector('.audio-progress-circle');
       if (!circle) {
-        console.warn('Progress ring missing circle element:', button.id);
         return;
       }
       
@@ -30,8 +29,6 @@
         currentPercent: 0
       });
     });
-    
-    console.log('Audio progress indicators initialized:', progressStates.size);
   }
   
   function setProgress(button, percent) {
